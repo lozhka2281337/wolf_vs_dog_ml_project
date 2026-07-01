@@ -7,7 +7,7 @@ import config as cfg
 
 CLASS_NAMES = ["dog", "wolf"]
 
-def predict_image(image_path, treshold=0.5):
+def predict_image(image_path, threshold=0.5):
     model = keras.models.load_model(cfg.MODEL_PATH)
 
     img = keras.utils.load_img(image_path, target_size=cfg.IMG_SIZE)
@@ -15,7 +15,7 @@ def predict_image(image_path, treshold=0.5):
     arr = np.expand_dims(arr, axis=0)
 
     prob = float(model.predict(arr, verbose=0)[0][0])
-    pred_idx = 1 if prob >= 0.5 else 0
+    pred_idx = 1 if prob >= threshold else 0
     pred_name = CLASS_NAMES[pred_idx]
 
     print(f"\nФайл: {image_path}")
@@ -29,4 +29,4 @@ if __name__ == "__main__":
     parser.add_argument("--threshold", type=float, default=0.5, help="Decision threshold")
     args = parser.parse_args()
 
-    predict_image(args.image, args.thresold)
+    predict_image(args.image, args.threshold)

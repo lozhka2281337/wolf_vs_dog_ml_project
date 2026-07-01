@@ -20,7 +20,7 @@ def build_model():
     ])
 
     model.compile(
-        optimizer=keras.optimizers.Adam(learning_rate=1e-3),
+        optimizer=keras.optimizers.Adam(learning_rate=1e-5),
         loss="binary_crossentropy",
         metrics=["accuracy"]
     )
@@ -33,7 +33,7 @@ def unfreeze_for_finetune(model, base_model, unfreeze_last_n=30):
         layer.trainable = False
 
     model.compile(
-        optimizer=keras.optimizers.Adam(learning_rate=1e-3),
+        optimizer=keras.optimizers.Adam(learning_rate=1e-5),
         loss="binary_crossentropy",
         metrics=["accuracy"]
     )
