@@ -18,8 +18,8 @@
 ## ✨ Features проекта ✨ 
 
 - Обучение в 2 этапа:
-  1. обучение классификационной головы
-  2. fine-tuning верхних слоёв 
+  - обучение классификационной головы
+  - fine-tuning верхних слоёв 
 - Аугментация изображений
 - Сохранение лучшей модели 
 - Метрики качества:
@@ -31,7 +31,7 @@
 ---
 
 ## 🗂️ Структура проекта
-
+```
 dog-wolf-classifier/
 │
 ├─ dataset/
@@ -55,27 +55,34 @@ dog-wolf-classifier/
 │
 ├─ requirements.txt
 └─ README.md
+```
 ---
 
 ## ⚙️ Установка
-
+```bash
 git clone https://github.com/lozhka2281337/wolf_vs_dog_ml_project
 cd wolf_vs_dog_ml_project
-
 python -m venv .venv
+```
 Windows
+```bash
 .venv\Scripts\activate
+```
 Linux / macOS
+```bash
 source .venv/bin/activate
+```
+
+
 ```bash
 pip install -r requirements.txt
-
+```
 ---
 
 ## 🧠 Данные
 
 Ижображения раскиданы по папкам классов:
-bash
+```bash
 dataset/
   train/
     dog/
@@ -83,7 +90,7 @@ dataset/
   test/
     dog/
     wolf/
-
+```
 > Названия папок (`dog`, `wolf`) используются как имена классов.
 
 ---
@@ -91,9 +98,9 @@ dataset/
 ## 🚀 Запуск
 
 ### 1) Обучение модели
-bash
+```bash
 python src/train.py
-
+```
 Что делает скрипт:
 
 - создаёт `train/validation` генераторы
@@ -104,19 +111,20 @@ python src/train.py
 ---
 
 ### 2) Оценка на тестовой выборке
-bash
+```bash
 python src/evaluate.py
+```
 
 Выводит:
 
-- `Test loss`
-- `Test accuracy`
-- `classification_report`
-- `confusion_matrix`
+- `Тестовые ошибки`
+- `Тестовая точность`
+- `отчет о классификации`
+- `матрица ошибок`
 
 ---
 
 ### 3) Предсказание на одном изображении
-bash
+```bash
 python src/predict.py --image "path/to/image.jpg" --threshold 0.5
-`
+```
